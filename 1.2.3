@@ -1,0 +1,242 @@
+#   a123_apple_1.py
+import turtle as trtl
+import random as rand
+#-----setup-----
+pear_image = "pear.gif" # Store the file name of your shape
+
+
+wn = trtl.Screen()
+wn.setup(width=1.0, height=1.0)
+wn.addshape(pear_image) # Make the screen aware of the new file
+wn.bgpic("background.gif")
+apple = trtl.Turtle()
+letter = trtl.Turtle()
+
+
+
+alpha = ["b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+randx = rand.randint(-200, 200)
+randy = rand.randint(-30,40)
+prompt = rand.choice(alpha)
+letter.hideturtle()
+distance = 5
+x = rand.randint(-200,200)
+y = rand.randint(-200,200)
+#-----functions-----
+# given a turtle, set that turtle to be shaped by the image file
+def draw_apple(active_apple):
+  active_apple.shape(pear_image)
+  wn.update()
+  #apple_letter()
+  
+
+
+def drop_apple():
+  # Set up
+  apple.penup()
+  ycor = apple.ycor()
+  apple.left(90)
+  # Move apple down
+  while (ycor > -150):
+    apple.back(distance)
+    ycor = apple.ycor()
+    letter.clear()
+  # Hide apple
+  if (apple.ycor() <= -150):
+    xcor = rand.randint(-200, 200)
+    ycor = rand.randint(-30, 40)
+    apple.goto(xcor, ycor)
+    letter.goto(apple.xcor(), apple.ycor())
+    ycor = apple.ycor()
+
+
+#TODO Create a function that takes a turtle as its parameter and gives that turtle (apple)
+# a new location on the tree, only if the list of letters is not empty. Associate the 
+# turtle with a new letter selected at random from the list of letters
+
+# List of letters
+def new_apples(apple):
+  if (len(alpha) > 0):
+    apple.hideturtle()
+    apple.goto(randx, randy)
+    letter.clear()
+    letter.penup()
+    letter.goto(apple.xcor(), apple.ycor())
+    apple.showturtle()
+    apple_letter()
+
+'''def redo():
+  let = rand.choice(alpha)
+  alpha.remove(let)
+  letter.hideturtle()
+  letter.goto(apple.xcor(), apple.ycor())
+  letter.write(let, font=("Arial", 74, "bold"))
+  letter.showturtle()
+  wn.onkeypress(drop_apple(letter))
+'''
+
+#TODO Create a function that takes a turtle (apple) and its corresponding letter from the letter
+# list and draws that letter on that turtle (apple)
+
+def apple_letter():
+  letter.showturtle()
+  letter.penup()
+  letter.color("white")
+  letter.goto(apple.xcor() - 25, apple.ycor() - 50)
+  letter.write(prompt, font=("Arial", 74, "bold"))
+  new_def()
+def new_def():
+  global prompt
+  prompt = rand.choice(alpha)
+  draw_apple(apple)
+
+  
+
+
+#TODO Create a function that takes a turtle (apple) and its corresponding letter from the letter
+# list and set that turtle to be shaped by the image file, call the letter drawing function,
+# and update the Screen
+
+def whatisthis():
+  apple.shape(pear_image)
+  apple_letter()
+  wn.update()
+
+#TODO Iterate over the numbers from 0 to the number of apples, creating that many turtles
+# calling your function that resets the apples by giving them a new random location
+# add the new apples to a list of apples to be used in the rest of the program.
+# The loop below executes the correct number of times by using the range() function
+# to create a list of numbers to iterate over.
+
+'''turtle_list = []
+
+for i in range(0, 25):
+  it = trtl.Turtle()
+  turtle_list.append(it)
+  
+for i in turtle_list:
+  new_apples(i)'''
+
+
+  
+
+#TODO Create a function that takes a letter as its parameter, uses that letter to retrieve the
+# corresponding turtle (apple) and causes both to drop from the tree simultaneously. Once the 
+# apple and letter have dropped, call the apple reseting function.
+
+'''def whatisthisreally(letter):
+  drop_apple()
+  wn.update()
+'''
+#TODO define a function per letter that you will use in your program. Each function should check
+# to see if the given letter is in the list of letters; if it is, it should drop the corresponding
+# apple
+
+def check_letters():
+  if (alpha[0] == "a"):
+    drop_apple()
+def b():    
+  if (alpha[1] == "b"):
+    drop_apple()
+def c():    
+  if (alpha[2] == "c"):
+    drop_apple()
+def d():
+  if (alpha[3] == "d"):
+    drop_apple()
+def e():    
+  if (alpha[4] == "e"):
+    drop_apple()
+def f():   
+  if (alpha[5] == "f"):
+      drop_apple()
+def g():      
+  if (alpha[6] == "g"):
+    drop_apple()
+def h():    
+  if (alpha[7] == "h"):
+    drop_apple()
+def i():    
+  if (alpha[8] == "i"):
+    drop_apple()
+def j():    
+  if (alpha[9] == "j"):
+    drop_apple()
+def k():    
+  if (alpha[10] == "k"):
+    drop_apple()
+def l():  
+  if (alpha[11] == "l"):
+    drop_apple()
+def m():    
+  if (alpha[12] == "m"):
+    drop_apple()
+def n():    
+  if (alpha[13] == "n"):
+    drop_apple()
+def o():    
+  if (alpha[14] == "o"):
+    drop_apple()
+def p():    
+  if (alpha[15] == "p"):
+    drop_apple()
+def q():    
+  if (alpha[16] == "q"):
+    drop_apple()
+def r():    
+  if (alpha[17] == "r"):
+    drop_apple()
+def s():    
+  if (alpha[18] == "s"):
+    drop_apple()
+def t():
+  if (alpha[19] == "t"):
+    drop_apple()
+def u():  
+  if (alpha[20] == "u"):
+    drop_apple()
+def v():    
+  if (alpha[21] == "v"):
+    drop_apple()
+def w():    
+  if (alpha[22] == "w"):
+    drop_apple()
+def x():    
+  if (alpha[23] == "x"):
+    drop_apple()
+def y():    
+  if (alpha[24] == "y"):
+    drop_apple()
+def z():    
+  if (alpha[25] == "z"):
+    drop_apple()
+def printhello():
+  print("hello")
+
+#TODO use the onkeypress method of wn to correlate the functions you defined above with each
+# of the letters that the user might type.
+# onkeypress requires that you name one function that must take
+# no arguments to be called when the specified key is pressed.
+
+wn.onkeypress(check_letters, )
+
+#-----function calls-----
+letter.penup()
+apple.penup()
+draw_apple(apple)
+wn.onkeypress(drop_apple, prompt)
+#redo()
+'''wn.onkeypress(new_apples(apple))
+wn.onkeypress(new_apples(it))
+apple_letter()'''
+#whatisthis()
+#whatisthisreally(letter)
+if (apple.ycor() <= 149):
+  new_apples(apple)
+
+wn.onkeypress(printhello,"space")
+
+wn.listen()
+wn.mainloop()
+
+# I didn't do step 12
